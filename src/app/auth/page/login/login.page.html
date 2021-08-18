@@ -1,0 +1,45 @@
+<ion-content>
+  <!--Insira Ícone-->
+  <h1>
+    <ion-icon name="checkmark-done-outline" color=danger class="icon-7em">
+    </ion-icon>
+  </h1>
+  <!--Formulário-->
+  <form [formGroup]="authForm" (submit)='onSubmit()'>
+    <ion-item>
+      <!--Inserido Ícone-->
+      <ion-icon name="mail-outline" color="primary" slot="start"></ion-icon>
+      <!--Input-->
+      <ion-input type="email" placeholder="E - mail" formControlName="email" inputmode="email" autofocus=true>
+      </ion-input>
+      <!--Erro no Email-->
+      <ion-note slot="end" color="danger" *ngIf="email.dirty && email.hasError('required')">
+        Não aceita em branco
+      </ion-note>
+      <ion-note slot="end" color="danger" *ngIf="email.dirty && email.hasError('eamil')">
+        E-mail inválido
+      </ion-note>
+    </ion-item>
+    <!--Inserrir a Senha-->
+    <ion-item>
+      <ion-icon name="lock-open-outline" color="primary" slot="start"></ion-icon>
+      <ion-input type="password" placeholder="Digite sua Senha" formControlName="password"></ion-input>
+      <!--Erro Senha-->
+      <ion-note slot="end" color="danger" *ngIf="password.dirty && password.hasError('required')">
+        Coloque um Valor
+      </ion-note>
+      <ion-note slot="end" color="danger" *ngIf="password.dirty && password.hasError('minlenght')">
+        Min 6 caracteres
+      </ion-note>
+    </ion-item>
+    <ion-button expand="block" type="submit" [disabled]="authForm.invalid">
+      Login</ion-button>
+  </form>
+
+
+  <ion-button expand="block" fill="clear">Crie uma Conta</ion-button>
+  <ion-button expand="block">
+    <ion-icon name="logo-facebook"> </ion-icon>   
+    Login Facebook
+  </ion-button>
+</ion-content>
